@@ -17,7 +17,6 @@ from pygeohash_fast import encode_many
 import pandas as pd
 from pathlib import Path
 import json
-import bloomfilter as bf
 
 hash_chars = 4
 
@@ -54,9 +53,7 @@ class NodeMemtable:
         ids = np.array([x.id for x in self.data],dtype=np.uint64)
         hashes=np.array(hashes)
         slicedbread = pd.DataFrame({"ids":ids,"hashes":hashes, "lon":nodes_coords[:,0], "lat":nodes_coords[:,1], "tags":tags})
-        slicedbread = slicedbread.groupby('hashes').apply(lambda x: self.spillout_hash(x),include_groups=True)
-        print(slicedbread)
-        
+        slicedbread = slicedbread.groupby('hashes')[["ids","hashes","lon","lat","tags"]].apply(lambda x: self.spillout_hash(x))
         print("Spilling out")
 
     def spillout_hash(self, x):

@@ -28,5 +28,5 @@ if __name__=="__main__":
         ## save filter
         with open(bfname, "wb") as out:
             out.write(bf.to_bytes())
-        print("%03d\t%s" %(i,bf.to_bytes()))
+#        print("%03d\t%s" %(i,bf.to_bytes()))
         
