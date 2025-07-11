@@ -73,7 +73,9 @@ def rasterize_ways(filename, outfilename):
     meta = ds.meta.copy()
     with rasterio.open(outfilename, 'w+', **meta) as out:
         out_arr = out.read(1)
-        burned = rasterio.features.rasterize(fg, out=out_arr, transform=ds.transform)
+        burned = rasterio.features.rasterize(fg,
+                                             out=out_arr,
+                                             transform=ds.transform)
 #        plt.imshow(burned)
 #        plt.colorbar()
 #        plt.show()

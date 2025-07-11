@@ -22,8 +22,8 @@ if __name__=="__main__":
 
     lonlat = np.array(lonlat)
     print(lonlat)
-    np.save("andorra.npy",lonlat)
+#    np.save("andorra.npy",lonlat)
 
-#    plt.scatter(lonlat[:,0],lonlat[:,1])
-#    plt.show()
+    plt.scatter(lonlat[:,0],lonlat[:,1])
+    plt.show()
     #len([entry for entry in osm if entry.tags.get('leisure') == 'park'])
